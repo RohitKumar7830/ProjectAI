@@ -28,6 +28,34 @@
 
 ---
 
-## 🧰 Folder Structure
+## 📁 Folder Structure
 
-codemate/ ├── src/ │ ├── main/ # Electron process │ ├── renderer/ # React UI │ └── ollama/ # Local AI client + context manager ├── public/ # Static assets ├── scripts/ # Dev scripts ├── package.json # Dependencies & scripts └── README.md
+```plaintext
+codemate/
+│
+├── public/                        # Static assets (e.g., index.html, icons)
+│
+├── src/
+│   ├── main/                      # Electron main process
+│   │   ├── electron.ts           # Electron entry point
+│   │   └── preload.ts            # Preload script for context bridge
+│   │
+│   ├── renderer/                 # React frontend (Electron renderer)
+│   │   ├── components/           # Reusable UI components
+│   │   ├── editor/               # Monaco Editor setup and logic
+│   │   ├── pages/                # Top-level UI views
+│   │   ├── hooks/                # Custom React hooks
+│   │   ├── utils/                # Helpers (tokenizer, file reader, etc.)
+│   │   └── App.tsx              # Main React app
+│   │
+│   └── ollama/                   # Local AI integration
+│       ├── promptManager.ts     # Context + prompt injection logic
+│       └── ollamaClient.ts      # Interface to local model via HTTP
+│
+├── scripts/                      # Dev/build/start scripts
+│   └── start-dev.sh             # Optional CLI start script
+│
+├── package.json                  # App dependencies and scripts
+├── tsconfig.json                 # TypeScript config
+├── electron-builder.json         # Build config for packaging app
+└── README.md                     # Project overview
